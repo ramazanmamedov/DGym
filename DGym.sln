@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGym.Domain", "DGym.Domain\DGym.Domain.csproj", "{A782CB98-8F9B-4745-862D-8029CC51A1F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGym.Domain.UnitTests", "DGym.Domain.UnitTests\DGym.Domain.UnitTests.csproj", "{7808902A-9A1D-4C6E-B109-1125F468FB6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A782CB98-8F9B-4745-862D-8029CC51A1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A782CB98-8F9B-4745-862D-8029CC51A1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A782CB98-8F9B-4745-862D-8029CC51A1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A782CB98-8F9B-4745-862D-8029CC51A1F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7808902A-9A1D-4C6E-B109-1125F468FB6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7808902A-9A1D-4C6E-B109-1125F468FB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7808902A-9A1D-4C6E-B109-1125F468FB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7808902A-9A1D-4C6E-B109-1125F468FB6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
