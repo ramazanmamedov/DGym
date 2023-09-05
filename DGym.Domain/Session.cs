@@ -5,7 +5,7 @@ namespace DGym.Domain;
 public class Session
 {
     private readonly Guid _trainerId;
-    private readonly List<Guid> _participantIds = new();
+    private readonly List<Reservation> _reservations = new();
    
     private readonly int _maxParticipants;
     
@@ -29,11 +29,19 @@ public class Session
 
     public ErrorOr<Success> ReserveSpot(Participant participant)
     {
-        if (_participantIds.Count >= _maxParticipants)
+        if (_reservations.Count >= _maxParticipants)
         {
             return SessionErrors.CannotHaveMoreReservationsThanParticipants;
         }
-        _participantIds.Add(participant.Id);
+
+        if (_reservations.Any(reservation => reservation.ParticipantId == participant.Id))
+        {
+            return Error.Conflict(description: "Participants cannot reserve twice");
+        }
+
+        var reservation = new Reservation(participant.Id);
+        _reservations.Add(reservation);
+        
         return Result.Success;
     }
 
@@ -44,11 +52,14 @@ public class Session
             return SessionErrors.CannotCancelReservationToCloseToSession;
         }
 
-        if (!_participantIds.Remove(participant.Id))
+        var reservation = _reservations.FirstOrDefault(res => res.ParticipantId == participant.Id);
+        if (reservation is null)
         {
             return Error.NotFound(description: "Participant not found");
+ 
         }
 
+        _reservations.Remove(reservation);
         return Result.Success;
     }
 

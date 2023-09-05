@@ -1,21 +1,19 @@
+using DGym.Domain.Common;
 using ErrorOr;
 
 namespace DGym.Domain;
 
-public class Participant
+public class Participant : Entity
 {
     private readonly Guid _userId;
     private readonly List<Guid> _sessionIds = new();
     private readonly Schedule _schedule = Schedule.Empty();
-
-    public Guid Id { get; }
     
     public Participant(
         Guid userId,
-        Guid? id = null)
+        Guid? id = null) : base(id ?? Guid.NewGuid())
     {
         _userId = userId;
-        Id = id ?? Guid.NewGuid();
     }
 
     public ErrorOr<Success> AddToSchedule(Session session)
