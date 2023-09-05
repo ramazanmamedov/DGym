@@ -1,6 +1,6 @@
 using DGym.Domain.Common;
 
-namespace DGym.Domain;
+namespace DGym.Domain.SessionAggregate;
 
 public class Reservation : Entity
 {

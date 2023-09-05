@@ -1,3 +1,4 @@
+using DGym.Domain.Common.ValueObjects;
 using Throw;
 
 namespace DGym.Domain.UnitTests.TestUtils.Common;

@@ -1,3 +1,4 @@
+using DGym.Domain.ParticipantAggregate;
 using DGym.Domain.UnitTests.TestConstants;
 
 namespace DGym.Domain.UnitTests.TestUtils.Participants;

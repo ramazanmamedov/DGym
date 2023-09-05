@@ -1,3 +1,4 @@
+using DGym.Domain.RoomAggregate;
 using DGym.Domain.UnitTests.TestConstants;
 
 namespace DGym.Domain.UnitTests.TestUtils.Rooms;

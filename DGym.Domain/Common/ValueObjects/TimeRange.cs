@@ -1,8 +1,7 @@
-using DGym.Domain.Common;
 using ErrorOr;
 using Throw;
 
-namespace DGym.Domain;
+namespace DGym.Domain.Common.ValueObjects;
 
 public class TimeRange : ValueObject
 {

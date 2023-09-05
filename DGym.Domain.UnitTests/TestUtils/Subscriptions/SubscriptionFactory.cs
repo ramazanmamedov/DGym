@@ -1,3 +1,4 @@
+using DGym.Domain.SubscriptionAggregate;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Constants = DGym.Domain.UnitTests.TestConstants.Constants;
 

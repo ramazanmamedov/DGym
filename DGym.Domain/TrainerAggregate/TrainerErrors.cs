@@ -1,6 +1,6 @@
 using ErrorOr;
 
-namespace DGym.Domain;
+namespace DGym.Domain.TrainerAggregate;
 
 public class TrainerErrors
 {

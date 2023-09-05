@@ -1,9 +1,11 @@
 using DGym.Domain.Common;
+using DGym.Domain.Common.Entities;
+using DGym.Domain.SessionAggregate;
 using ErrorOr;
 
-namespace DGym.Domain;
+namespace DGym.Domain.ParticipantAggregate;
 
-public class Participant : Entity
+public class Participant : AggregateRoot
 {
     private readonly Guid _userId;
     private readonly List<Guid> _sessionIds = new();

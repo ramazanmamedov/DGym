@@ -1,7 +1,6 @@
-using System.Runtime.InteropServices.JavaScript;
 using ErrorOr;
 
-namespace DGym.Domain;
+namespace DGym.Domain.SubscriptionAggregate;
 
 public static class SubscriptionErrors
 {

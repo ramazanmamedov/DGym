@@ -1,15 +1,16 @@
+using DGym.Domain.Common;
+using DGym.Domain.Common.ValueObjects;
+using DGym.Domain.ParticipantAggregate;
 using ErrorOr;
 
-namespace DGym.Domain;
+namespace DGym.Domain.SessionAggregate;
 
-public class Session
+public class Session : AggregateRoot
 {
     private readonly Guid _trainerId;
     private readonly List<Reservation> _reservations = new();
-   
     private readonly int _maxParticipants;
     
-    public Guid Id { get; }
     public DateOnly Date { get; }
     public TimeRange Time { get; set; }
 
@@ -18,13 +19,12 @@ public class Session
         TimeRange time,
         int maxParticipants, 
         Guid trainerId,
-        Guid? id = null)
+        Guid? id = null) : base(id ?? Guid.NewGuid())
     {
         Date = date;
         Time = time;
         _maxParticipants = maxParticipants;
         _trainerId = trainerId;
-        Id = id ?? Guid.NewGuid();
     }
 
     public ErrorOr<Success> ReserveSpot(Participant participant)

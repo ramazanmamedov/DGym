@@ -1,6 +1,7 @@
+using DGym.Domain.Common.ValueObjects;
 using ErrorOr;
 
-namespace DGym.Domain;
+namespace DGym.Domain.Common.Entities;
 
 public class Schedule
 {

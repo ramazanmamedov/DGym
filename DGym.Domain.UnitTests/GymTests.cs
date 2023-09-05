@@ -1,3 +1,4 @@
+using DGym.Domain.GymAggregate;
 using DGym.Domain.UnitTests.TestUtils.Gyms;
 using DGym.Domain.UnitTests.TestUtils.Rooms;
 using FluentAssertions;

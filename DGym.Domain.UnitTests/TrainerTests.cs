@@ -1,3 +1,4 @@
+using DGym.Domain.TrainerAggregate;
 using DGym.Domain.UnitTests.TestConstants;
 using DGym.Domain.UnitTests.TestUtils.Common;
 using DGym.Domain.UnitTests.TestUtils.Sessions;

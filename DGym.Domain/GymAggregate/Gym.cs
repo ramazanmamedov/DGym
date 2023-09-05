@@ -1,24 +1,23 @@
+using DGym.Domain.Common;
+using DGym.Domain.RoomAggregate;
 using ErrorOr;
 
-namespace DGym.Domain;
+namespace DGym.Domain.GymAggregate;
 
-public class Gym
+public class Gym : AggregateRoot
 {
     private readonly Guid _subscriptionId;
     private readonly int _maxRooms;
     private readonly List<Guid> _roomIds = new();
     
-    public Guid Id { get; }
-
     public Gym(
         int maxRooms,
         Guid subscriptionId,
         Guid? id = null
-    )
+    ) : base(id ?? Guid.NewGuid())
     {
         _maxRooms = maxRooms;
         _subscriptionId = subscriptionId;
-        Id = id ?? Guid.NewGuid();
     }
 
     public ErrorOr<Success> AddRoom(Room room)

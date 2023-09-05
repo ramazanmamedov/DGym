@@ -1,3 +1,5 @@
+using DGym.Domain.Common.ValueObjects;
+
 namespace DGym.Domain.UnitTests.TestConstants;
 
 public static partial class Constants

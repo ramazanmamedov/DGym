@@ -1,3 +1,5 @@
+using DGym.Domain.Common.ValueObjects;
+using DGym.Domain.SessionAggregate;
 using DGym.Domain.UnitTests.TestConstants;
 
 namespace DGym.Domain.UnitTests.TestUtils.Sessions;
