@@ -1,4 +1,4 @@
-namespace DGym.Domain;
+namespace DGym.Domain.Common.Interfaces;
 
 public interface IDateTimeProvider
 {

@@ -1,4 +1,5 @@
 using DGym.Domain.Common;
+using DGym.Domain.Common.Interfaces;
 using DGym.Domain.Common.ValueObjects;
 using DGym.Domain.ParticipantAggregate;
 using ErrorOr;

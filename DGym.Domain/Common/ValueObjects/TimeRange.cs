@@ -13,12 +13,17 @@ public class TimeRange : ValueObject
         Start = start.Throw().IfGreaterThanOrEqualTo(end);
         End = end;
     }
-
+    
     public static ErrorOr<TimeRange> FromDateTimes(DateTime start, DateTime end)
     {
-        if (start.Date != end.Date || start >= end)
+        if (start.Date != end.Date )
         {
-            return Error.Validation();
+            return Error.Validation(description: "Start and end date times must be on the one day");
+        }
+
+        if (start >= end)
+        {
+            return Error.Validation(description: "End time must be greater than start time");
         }
 
         return new TimeRange(TimeOnly.FromDateTime(start), TimeOnly.FromDateTime(end));
