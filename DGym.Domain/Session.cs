@@ -4,28 +4,27 @@ namespace DGym.Domain;
 
 public class Session
 {
-    private readonly Guid _id;
     private readonly Guid _trainerId;
     private readonly List<Guid> _participantIds = new();
-    private readonly DateOnly _date;
-    private readonly TimeOnly _startTime;
-    private readonly TimeOnly _endTime;
+   
     private readonly int _maxParticipants;
+    
+    public Guid Id { get; }
+    public DateOnly Date { get; }
+    public TimeRange Time { get; set; }
 
     public Session(
         DateOnly date,
-        TimeOnly startTime,
-        TimeOnly endTime,
+        TimeRange time,
         int maxParticipants, 
         Guid trainerId,
         Guid? id = null)
     {
-        _date = date;
-        _startTime = startTime;
-        _endTime = endTime;
+        Date = date;
+        Time = time;
         _maxParticipants = maxParticipants;
         _trainerId = trainerId;
-        _id = id ?? Guid.NewGuid();
+        Id = id ?? Guid.NewGuid();
     }
 
     public ErrorOr<Success> ReserveSpot(Participant participant)
@@ -56,6 +55,6 @@ public class Session
     private bool IsTooCloseToSession(DateTime utcNow)
     {
         const int minHours = 24;
-        return (_date.ToDateTime(_startTime) - utcNow).TotalHours < minHours;
+        return (Date.ToDateTime(Time.Start) - utcNow).TotalHours < minHours;
     }
 }

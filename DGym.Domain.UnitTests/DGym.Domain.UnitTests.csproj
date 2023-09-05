@@ -25,6 +25,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DGym.Domain\DGym.Domain.csproj" />
+
+
+
+
+
+
     </ItemGroup>
 
 

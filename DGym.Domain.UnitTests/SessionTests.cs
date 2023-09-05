@@ -6,7 +6,7 @@ using FluentAssertions;
 
 namespace DGym.Domain.UnitTests;
 
-public class SessionTest
+public class SessionTests
 {
    [Fact]
    public void ReserveSpot_WhenNoMoreRoom_ShouldFailReservation()
@@ -32,8 +32,7 @@ public class SessionTest
       //Arrange
       var session = SessionFactory.CreateSession(
          date: Constants.Session.Date,
-         startTime: Constants.Session.StartTime,
-         endTime: Constants.Session.EndTime);
+         time: Constants.Session.Time);
 
       var participant = ParticipantFactory.CreateParticipant();
       var cancellationDateTime = Constants.Session.Date.ToDateTime(TimeOnly.MinValue);
