@@ -47,7 +47,7 @@ public class SessionTests
       //Assert
       reserveSpotResult.IsError.Should().BeFalse();
       cancelReservationResult.IsError.Should().BeTrue();
-      cancelReservationResult.FirstError.Should().Be(SessionErrors.CannotCancelReservationToCloseToSession);
+      cancelReservationResult.FirstError.Should().Be(SessionErrors.CannotCancelReservationTooCloseToSession);
    }
 }
 

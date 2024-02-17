@@ -7,42 +7,65 @@ namespace DGym.Domain.RoomAggregate;
 
 public class Room : AggregateRoot
 {
-    private readonly List<Guid> _sessionIds = new();
+    private readonly Dictionary<DateOnly, List<Guid>> _sessionIdsByDate = new();
     private readonly int _maxDailySessions;
-    private readonly Guid _gymId;
     private readonly Schedule _schedule;
-    
+
+    public string Name { get; }
+
+    public Guid GymId { get; }
+
+    public IReadOnlyList<Guid> SessionIds => _sessionIdsByDate.Values
+        .SelectMany(sessionIds => sessionIds)
+        .ToList()
+        .AsReadOnly();
+
     public Room(
+        string name,
         int maxDailySessions,
         Guid gymId,
         Schedule? schedule = null,
         Guid? id = null) : base(id ?? Guid.NewGuid())
     {
+        Name = name;
         _maxDailySessions = maxDailySessions;
-        _gymId = gymId;
+        GymId = gymId;
         _schedule = schedule ?? Schedule.Empty();
     }
 
     public ErrorOr<Success> ScheduleSession(Session session)
     {
-        if (_sessionIds.Any(id => id == session.Id))
+        if (SessionIds.Any(id => id == session.Id))
         {
             return Error.Conflict(description: "Session already exists in room");
         }
 
-        if (_sessionIds.Count >= _maxDailySessions)
+        if (!_sessionIdsByDate.ContainsKey(session.Date))
+        {
+            _sessionIdsByDate[session.Date] = new();
+        }
+
+        var dailySessions = _sessionIdsByDate[session.Date];
+
+        if (dailySessions.Count >= _maxDailySessions)
         {
             return RoomErrors.CannotHaveMoreSessionThanSubscriptionAllows;
         }
 
         var addEventResult = _schedule.BookTimeSlot(session.Date, session.Time);
-        if (addEventResult is {IsError: true, FirstError.Type: ErrorType.Conflict})
+
+        if (addEventResult.IsError && addEventResult.FirstError.Type == ErrorType.Conflict)
         {
             return RoomErrors.CannotHaveTwoOrMoreOverlappingSessions;
         }
-        
-        _sessionIds.Add(session.Id);
+
+        dailySessions.Add(session.Id);
+
         return Result.Success;
     }
 
+    public bool HasSession(Guid sessionId)
+    {
+        return SessionIds.Contains(sessionId);
+    }
 }

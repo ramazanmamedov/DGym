@@ -7,16 +7,18 @@ namespace DGym.Domain.TrainerAggregate;
 
 public class Trainer : AggregateRoot
 {
-    private readonly Guid _userId;
     private readonly List<Guid> _sessionIds = new();
     private readonly Schedule _schedule;
+
+    public Guid UserId { get; }
 
     public Trainer(
         Guid userId,
         Schedule? schedule = null,
-        Guid? id = null) : base(id ?? Guid.NewGuid())
+        Guid? id = null)
+        : base(id ?? Guid.NewGuid())
     {
-        _userId = userId;
+        UserId = userId;
         _schedule = schedule ?? Schedule.Empty();
     }
 

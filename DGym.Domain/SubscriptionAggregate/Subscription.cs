@@ -7,22 +7,22 @@ namespace DGym.Domain.SubscriptionAggregate;
 public class Subscription : AggregateRoot
 {
     private readonly List<Guid> _gymIds = new();
-    private readonly SubscriptionType _subscriptionType;
     private readonly int _maxGyms;
     private readonly Guid _adminId;
+    public SubscriptionType SubscriptionType { get; }
 
     public Subscription(
         SubscriptionType subscriptionType,
         Guid adminId,
-        Guid? id = null
-        ) : base(id ?? Guid.NewGuid())
+        Guid? id = null)
+        : base(id ?? Guid.NewGuid())
     {
-        _subscriptionType = subscriptionType;
+        SubscriptionType = subscriptionType;
         _maxGyms = GetMaxGyms();
         _adminId = adminId;
     }
 
-    public int GetMaxGyms() => _subscriptionType.Name switch
+    public int GetMaxGyms() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 1,
         nameof(SubscriptionType.Starter) => 1,
@@ -30,7 +30,7 @@ public class Subscription : AggregateRoot
         _ => throw new InvalidOperationException()
     };
 
-    public int GetMaxRooms() => _subscriptionType.Name switch
+    public int GetMaxRooms() => SubscriptionType.Name switch
     {
             nameof(SubscriptionType.Free) => 4,
             nameof(SubscriptionType.Starter) => 3,
@@ -38,7 +38,7 @@ public class Subscription : AggregateRoot
             _ => throw new InvalidOperationException()
     };
 
-    public int GetMaxDailySessions() => _subscriptionType.Name switch
+    public int GetMaxDailySessions() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 4,
         nameof(SubscriptionType.Starter) => int.MaxValue,

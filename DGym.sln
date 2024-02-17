@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGym.Domain", "DGym.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGym.Domain.UnitTests", "DGym.Domain.UnitTests\DGym.Domain.UnitTests.csproj", "{7808902A-9A1D-4C6E-B109-1125F468FB6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGym.Application", "DGym.Application\DGym.Application.csproj", "{C49CBFA5-FEB8-4C1F-A66F-01DD33A0E72A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGym.Infrastructure", "DGym.Infrastructure\DGym.Infrastructure.csproj", "{AD52E986-62AC-4E80-B08A-7C51A66C8ACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{7808902A-9A1D-4C6E-B109-1125F468FB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7808902A-9A1D-4C6E-B109-1125F468FB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7808902A-9A1D-4C6E-B109-1125F468FB6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C49CBFA5-FEB8-4C1F-A66F-01DD33A0E72A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C49CBFA5-FEB8-4C1F-A66F-01DD33A0E72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C49CBFA5-FEB8-4C1F-A66F-01DD33A0E72A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C49CBFA5-FEB8-4C1F-A66F-01DD33A0E72A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD52E986-62AC-4E80-B08A-7C51A66C8ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD52E986-62AC-4E80-B08A-7C51A66C8ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD52E986-62AC-4E80-B08A-7C51A66C8ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD52E986-62AC-4E80-B08A-7C51A66C8ACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

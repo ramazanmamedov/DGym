@@ -7,15 +7,18 @@ namespace DGym.Domain.ParticipantAggregate;
 
 public class Participant : AggregateRoot
 {
-    private readonly Guid _userId;
+    private readonly Schedule _schedule;
     private readonly List<Guid> _sessionIds = new();
-    private readonly Schedule _schedule = Schedule.Empty();
-    
+    public Guid UserId { get; }
+    public IReadOnlyList<Guid> SessionIds => _sessionIds;
+
     public Participant(
         Guid userId,
+        Schedule? schedule = null,
         Guid? id = null) : base(id ?? Guid.NewGuid())
     {
-        _userId = userId;
+        UserId = userId;
+        _schedule = schedule ?? Schedule.Empty();
     }
 
     public ErrorOr<Success> AddToSchedule(Session session)

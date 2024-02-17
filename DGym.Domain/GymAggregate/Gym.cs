@@ -6,18 +6,23 @@ namespace DGym.Domain.GymAggregate;
 
 public class Gym : AggregateRoot
 {
-    private readonly Guid _subscriptionId;
     private readonly int _maxRooms;
     private readonly List<Guid> _roomIds = new();
+    public string Name { get; }
+    public IReadOnlyList<Guid> RoomIds => _roomIds;
+
+    public Guid SubscriptionId { get; }
     
     public Gym(
+        string name,
         int maxRooms,
         Guid subscriptionId,
-        Guid? id = null
-    ) : base(id ?? Guid.NewGuid())
+        Guid? id = null)
+        : base(id ?? Guid.NewGuid())
     {
+        Name = name;
         _maxRooms = maxRooms;
-        _subscriptionId = subscriptionId;
+        SubscriptionId = subscriptionId;
     }
 
     public ErrorOr<Success> AddRoom(Room room)

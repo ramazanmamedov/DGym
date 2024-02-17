@@ -1,4 +1,5 @@
 using DGym.Domain.Common.ValueObjects;
+using DGym.Domain.SessionAggregate;
 
 namespace DGym.Domain.UnitTests.TestConstants;
 
@@ -13,5 +14,10 @@ public static partial class Constants
             TimeOnly.MinValue.AddHours(9));
         
         public const int MaxParticipants = 10;
+        
+        public static readonly List<SessionCategory> Categories = new();
+        
+        public const string Name = "Boxing";
+        public const string Description = "The best boxing";
     }
 } 
